@@ -1,7 +1,7 @@
-##Тестовое задание на позицию Backend Developer.
+## Тестовое задание на позицию Backend Developer.
 
-Структура проекта представляет собой монорепозиторий.
-Стек технологий: NestJs, PostgreSQL + TypeOrm, Redis.
+Структура проекта представляет собой монорепозиторий.  
+Стек технологий: NestJs, PostgreSQL + TypeOrm, Redis.  
 Проект доступен по [ссылке](https://au-webapp-api.herokuapp.com/graphql)
 
 ### В соответствии с заданием, реализовано:
