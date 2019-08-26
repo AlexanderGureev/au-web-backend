@@ -50,6 +50,7 @@ const root = join(__dirname, '..', '..')
         formatError: error => {
           return error
         },
+        introspection: true,
         cors: {
           credentials: true,
           origin: [config.get('CLIENT_URL')],
