@@ -1,0 +1,23 @@
+{
+  "name": "@au/roles",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "typeorm": "ts-node -r ts-node/register ../../node_modules/typeorm/cli.js",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@au/entities": "0.0.1",
+    "@nestjs/common": "6.3.1",
+    "@nestjs/typeorm": "6.1.2",
+    "typeorm": "0.2.18"
+  },
+  "devDependencies": {
+    "@types/node": "12.7.2",
+    "typescript": "latest"
+  }
+}

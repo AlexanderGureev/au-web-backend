@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "yarn workspace @au/gateway start",
+    "start:dev": "yarn workspace @au/gateway dev",
+    "build": "rm -rf ./packages/*/dist && lerna run build",
+    "heroku-postbuild": "yarn && yarn build",
+    "typeorm": "yarn workspace @au/gateway typeorm",
+    "lint": "tslint --project tsconfig.json -c tslint.json -t codeFrame packages/**/*.ts",
+    "delete:deps": "rm -rf ./packages/*/node_modules && rm -rf ./packages/*/dist",
+    "watch": "lerna run watch --parallel"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "husky": "^2.4.1",
+    "lerna": "^3.16.4",
+    "tslint": "^5.17.0",
+    "typescript": "3.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint && yarn typecheck"
+    }
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "reflect-metadata": "^0.1.13"
+  }
+}

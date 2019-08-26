@@ -1,0 +1,67 @@
+type User {
+  id: ID!
+  email: String!
+  profile: Profile
+  registeredAt: DateTime
+  lastLogonAt: DateTime
+}
+
+type Profile {
+  firstName: String!
+  lastName: String!
+  avatarPath: String!
+}
+
+type RegisterUserResponse {
+  user: User
+}
+
+type LoginUserResponse {
+  user: User
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input RegisterUserInput {
+  email: String!
+  password: String!
+}
+
+type UpdateProfileResponse {
+  profile: Profile
+}
+
+input UpdateProfileInput {
+  firstName: String!
+  lastName: String!
+  avatarPath: String!
+}
+
+input UpdateProfileByIdInput {
+  userId: ID!
+  firstName: String!
+  lastName: String!
+  avatarPath: String!
+}
+
+type UserList {
+  rows: [User]!
+  count: Int!
+}
+
+type Mutation {
+  login(input: LoginUserInput!): LoginUserResponse!
+  logout: Boolean
+  register(input: RegisterUserInput!): RegisterUserResponse!
+  updateProfile(input: UpdateProfileInput!): UpdateProfileResponse!
+  updateProfileById(input: UpdateProfileByIdInput!): UpdateProfileResponse!
+}
+
+type Query {
+  me: User!
+  user(id: ID!): User!
+  users: UserList!
+}

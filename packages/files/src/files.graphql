@@ -1,0 +1,10 @@
+scalar Upload
+
+type FileResponse {
+  fileName: String!
+}
+
+type Mutation {
+  uploadFile(file: Upload!): FileResponse!
+  deleteFile(fileName: String!): FileResponse!
+}
