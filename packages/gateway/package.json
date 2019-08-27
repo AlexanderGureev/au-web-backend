@@ -12,12 +12,13 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@au/roles": "0.0.1",
-    "@au/users": "0.0.1",
+    "@au/api": "0.0.1",
     "@au/auth": "0.0.1",
-    "@au/files": "0.0.1",
+    "@au/common": "0.0.1",
     "@au/config": "0.0.1",
-    "@au/middleware": "0.0.1",
+    "@au/dataloader": "0.0.1",
+    "@au/db": "0.0.1",
+    "@au/files": "0.0.1",
     "@nestjs/common": "6.3.1",
     "@nestjs/core": "6.3.1",
     "@nestjs/graphql": "6.2.4",
@@ -25,6 +26,7 @@
     "@nestjs/serve-static": "^1.0.1",
     "@nestjs/typeorm": "6.1.2",
     "apollo-server-express": "2.6.3",
+    "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "graphql": "14.3.1",
@@ -37,8 +39,8 @@
   },
   "devDependencies": {
     "@types/node": "12.7.2",
-    "typescript": "3.5.3",
     "nodemon": "^1.19.1",
-    "ts-node": "^8.3.0"
+    "ts-node": "^8.3.0",
+    "typescript": "3.5.3"
   }
 }

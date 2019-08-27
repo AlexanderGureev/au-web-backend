@@ -1,6 +1,7 @@
 import { Module, Scope } from '@nestjs/common'
 import { ProfileDataLoaderService } from './profileDataloader.service'
 import { Connection } from 'typeorm'
+import { DatabaseModule } from '@au/db'
 
 const profileDataLoaderFactory = {
   inject: [Connection],
@@ -10,6 +11,7 @@ const profileDataLoaderFactory = {
 }
 
 @Module({
+  imports: [DatabaseModule],
   providers: [profileDataLoaderFactory],
   exports: [profileDataLoaderFactory],
 })

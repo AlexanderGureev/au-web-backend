@@ -1,7 +1,5 @@
 import { SetMetadata } from '@nestjs/common'
-import { RoleEnums } from '@au/entities'
-
-const { PossessionType } = RoleEnums
+import { PossessionType } from '@au/db'
 
 export const ResourceAccess = (
   resource: string,

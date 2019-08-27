@@ -10,7 +10,7 @@
     "watch": "tsc --watch"
   },
   "dependencies": {
-    "@au/entities": "0.0.1",
+    "@au/db": "0.0.1",
     "@nestjs/common": "6.3.1",
     "@nestjs/typeorm": "6.1.2",
     "dataloader": "^1.4.0"

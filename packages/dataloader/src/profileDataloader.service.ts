@@ -1,5 +1,5 @@
 import DataLoader from 'dataloader'
-import { Profile } from '@au/entities'
+import { Profile } from '@au/db'
 import { IDataLoader } from './dataloader.interface'
 import { Connection, In } from 'typeorm'
 

@@ -5,35 +5,22 @@ import {
   RequestMethod,
 } from '@nestjs/common'
 import { GraphQLModule } from '@nestjs/graphql'
-import { TypeOrmModule } from '@nestjs/typeorm'
 import { GraphQLDate, GraphQLTime, GraphQLDateTime } from 'graphql-iso-date'
 import cookieParser from 'cookie-parser'
+import compression from 'compression'
 import { join } from 'path'
 
-import { UsersModule } from '@au/users'
-import { AuthMiddleware } from '@au/middleware'
-import { RolesModule } from '@au/roles'
+import { AuthMiddleware } from '@au/common'
 import { FilesModule } from '@au/files'
 import { ConfigModule, ConfigService } from '@au/config'
 import { AuthModule } from '@au/auth'
+import { UsersModule } from '@au/api'
+import { DatabaseModule } from '@au/db'
 
 const root = join(__dirname, '..', '..')
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        url: config.get('DATABASE_URL'),
-        entities: [root + '/entities/**/*.js'],
-        migrations: [root + '/**/migrations/**.js'],
-        migrationsRun: true,
-        synchronize: true,
-        logging: false,
-      }),
-    }),
     GraphQLModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -67,10 +54,10 @@ const root = join(__dirname, '..', '..')
         context: ({ req, res }) => ({ req, res }),
       }),
     }),
+    DatabaseModule,
     ConfigModule,
     FilesModule,
     UsersModule,
-    RolesModule,
     AuthModule,
   ],
 })
@@ -79,7 +66,11 @@ export class ApplicationModule implements NestModule {
 
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(cookieParser(this.config.get('COOKIE_SECRET')), AuthMiddleware)
+      .apply(
+        compression(),
+        cookieParser(this.config.get('COOKIE_SECRET')),
+        AuthMiddleware,
+      )
       .forRoutes({ path: '/graphql', method: RequestMethod.ALL })
   }
 }
